@@ -60,5 +60,5 @@ export default function Post() {
       setPost(data);
     });
   }, [id]);
-  return post && <PostItem id={id} post={post} />;
+  return post && <PostItem post={post} />;
 }

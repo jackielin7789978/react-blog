@@ -40,7 +40,7 @@ export default function App() {
         <Sidebar />
         <MainArea>
           <Switch>
-            <Route path="/post/:id">
+            <Route path="/posts/:id">
               <Post />
             </Route>
             <Route path="/about">

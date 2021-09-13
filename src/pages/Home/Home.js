@@ -59,9 +59,9 @@ function Post({ post }) {
   return (
     <PostWrapper>
       <CreatedAt>{new Date(post.createdAt).toDateString()}</CreatedAt>
-      <Title to={`/post/${post.id}`}>{post.title}</Title>
+      <Title to={`/posts/${post.id}`}>{post.title}</Title>
       <ContentPreview>{post.body}</ContentPreview>
-      <ReadMoreBTN to={`/post/${post.id}`}>READ MORE</ReadMoreBTN>
+      <ReadMoreBTN to={`/posts/${post.id}`}>READ MORE</ReadMoreBTN>
     </PostWrapper>
   );
 }
