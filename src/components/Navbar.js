@@ -93,14 +93,14 @@ function NavbarBtns() {
 }
 
 export default function Navbar() {
-  const { isGettingUser } = useContext(AuthContext);
+  // const { isGettingUser } = useContext(AuthContext);
   return (
     <Container>
       <TopBar />
       <BottomBar>
         <BottomBarWrapper>
           <Sitename to="/">blogg</Sitename>
-          {!isGettingUser && <NavbarBtns />}
+          <NavbarBtns />
         </BottomBarWrapper>
       </BottomBar>
     </Container>

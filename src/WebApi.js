@@ -33,12 +33,17 @@ export const login = async (username, password) => {
 
 export const getMe = async () => {
   const token = localStorage.getItem("token");
-  const res = await fetch(`${BASE_URL}/me`, {
-    headers: {
-      authorization: `Bearer ${token}`,
-    },
-  });
-  return await res.json();
+  let res;
+  try {
+    res = await fetch(`${BASE_URL}/me`, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
+    return await res.json();
+  } catch (e) {
+    console.log(e);
+  }
 };
 
 export const register = async (username, password, nickname) => {
