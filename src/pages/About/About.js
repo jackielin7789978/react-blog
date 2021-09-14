@@ -27,9 +27,10 @@ const IMG = styled.img`
   width: 700px;
 `;
 const Desc = styled.div`
+  font-size: 16px;
   margin-top: 14px;
   text-align: center;
-  line-height: 1.5em;
+  line-height: 1.8em;
 `;
 
 export default function About() {
@@ -40,11 +41,19 @@ export default function About() {
       </Title>
       <IMG src={about} alt="about me" />
       <Desc>
-        Blah Blah Blah Blah Blah
+        Hi, I'm Jackie.
         <br />
-        Blah Blah Blah Blah Blah
+        This is a blog I built using React.
         <br />
-        Blah Blah Blah Blah Blah
+        Click{" "}
+        <a
+          href="https://github.com/jackielin7789978/react-blog"
+          target="_blank"
+          rel="noreferrer"
+        >
+          here
+        </a>{" "}
+        to check it out on GitHub.
         <br />
       </Desc>
     </PageWrapper>

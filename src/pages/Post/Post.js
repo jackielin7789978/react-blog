@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
-import { useState, useEffect } from "react/cjs/react.development";
+import { useState, useEffect } from "react";
 import { getSinglePost } from "../../WebApi";
 import { COLOR } from "../../constants/styles";
 
@@ -53,12 +53,12 @@ PostItem.propTypes = {
 
 export default function Post() {
   window.scroll(0, 0);
-  const [post, setPost] = useState(null);
+  const [post, setPost] = useState([]);
   let { id } = useParams();
   useEffect(() => {
     getSinglePost(id).then((data) => {
       setPost(data);
     });
   }, [id]);
-  return post && <PostItem post={post} />;
+  return <PostItem post={post} />;
 }

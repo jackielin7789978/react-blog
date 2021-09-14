@@ -55,7 +55,7 @@ export default function Paginator() {
             </BTN>
             <BTN
               onClick={() => {
-                setPageNum(pageNum - 1);
+                setPageNum((pageNum) => pageNum - 1);
               }}
             >
               上一頁
@@ -66,7 +66,7 @@ export default function Paginator() {
           <>
             <BTN
               onClick={() => {
-                setPageNum(pageNum + 1);
+                setPageNum((pageNum) => pageNum + 1);
               }}
             >
               下一頁
