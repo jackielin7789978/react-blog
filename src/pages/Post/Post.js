@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { getSinglePost } from "../../WebApi";
-import { COLOR } from "../../constants/styles";
+import { COLOR, MEDIA_QUERY } from "../../constants/styles";
 
 const PostWrapper = styled.div`
   display: flex;
@@ -21,10 +21,22 @@ const Title = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  ${MEDIA_QUERY.tablet} {
+    font-size: 26px;
+  }
+  ${MEDIA_QUERY.mobile} {
+    font-size: 24px;
+  }
 `;
 const CreatedAt = styled.div`
   font-size: 16px;
   color: ${COLOR.ghost};
+  ${MEDIA_QUERY.tablet} {
+    font-size: 14px;
+  }
+  ${MEDIA_QUERY.mobile} {
+    font-size: 12px;
+  }
 `;
 const Content = styled.div`
   font-size: 18px;
@@ -35,6 +47,12 @@ const Content = styled.div`
   color: ${COLOR.text_dark};
   white-space: pre-wrap;
   word-wrap: break-word;
+  ${MEDIA_QUERY.tablet} {
+    font-size: 16px;
+  }
+  ${MEDIA_QUERY.mobile} {
+    font-size: 16px;
+  }
 `;
 
 function PostItem({ post }) {

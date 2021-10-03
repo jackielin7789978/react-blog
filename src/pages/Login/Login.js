@@ -11,12 +11,19 @@ import {
   Label,
   ERR,
 } from "../../constants/formStyle";
+import { MEDIA_QUERY } from "../../constants/styles";
 
 const PageWrapper = styled.div`
   min-height: calc(100vh - 155px);
   display: flex;
   justify-content: space-around;
   align-items: center;
+  ${MEDIA_QUERY.tablet} {
+    flex-direction: column;
+  }
+  ${MEDIA_QUERY.mobile} {
+    flex-direction: column;
+  }
 `;
 
 export default function Login() {

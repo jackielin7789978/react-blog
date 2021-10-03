@@ -1,17 +1,23 @@
 import styled from "styled-components";
-import { COLOR } from "../constants/styles";
+import { COLOR, MEDIA_QUERY } from "../constants/styles";
 import blogg from "../pics/blogg.png";
 
 const Container = styled.div`
   min-height: calc(100vh - 120px);
   min-width: 200px;
-  width: 20%;
+  width: 20vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: fixed;
-  left: 8%;
+  left: 6%;
+  ${MEDIA_QUERY.tablet} {
+    left: 5%;
+  }
+  ${MEDIA_QUERY.mobile} {
+    display: none;
+  }
 `;
 const Desc = styled.div`
   margin-top: 12px;

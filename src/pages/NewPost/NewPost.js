@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { COLOR } from "../../constants/styles";
+import { COLOR, MEDIA_QUERY } from "../../constants/styles";
 import { publishPost } from "../../WebApi";
 import { useHistory } from "react-router";
 import { ERR } from "../../constants/formStyle";
@@ -19,10 +19,15 @@ const PageWrapper = styled.div`
 `;
 const EditorWrapper = styled.div`
   max-width: 700px;
-  min-width: 500px;
-  width: 35%;
+  width: 40vw;
   padding: 30px;
   border: 1px solid ${COLOR.transparent_primary};
+  ${MEDIA_QUERY.tablet} {
+    width: 40vw;
+  }
+  ${MEDIA_QUERY.mobile} {
+    width: 60vw;
+  }
 `;
 const PageTitle = styled.div`
   font-size: 28px;

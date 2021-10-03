@@ -1,22 +1,29 @@
 import styled from "styled-components";
-import { COLOR } from "./styles";
+import { COLOR, MEDIA_QUERY } from "./styles";
 
 export const FormWrapper = styled.div`
-  width: 400px;
+  width: 30vw;
   height: 420px;
   padding: 20px;
+  margin: 20px;
   border: 1px solid transparent;
   box-shadow: ${COLOR.ghost} 2px 5px 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+
+  ${MEDIA_QUERY.tablet} {
+    width: 40vw;
+  }
+  ${MEDIA_QUERY.mobile} {
+    width: 60vw;
   }
 `;
 export const Title = styled.div`

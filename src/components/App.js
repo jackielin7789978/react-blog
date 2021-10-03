@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { Switch, Route } from "react-router-dom";
 import styled from "styled-components";
-import Navbar from "./Navbar";
+import Navbar from "./Nav/Navbar";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
 import { Home, Post, About, Login, NewPost } from "../pages";
 import { AuthContext } from "../context";
 import { getAuthToken } from "../utils";
 import { getMe } from "../WebApi";
+import { MEDIA_QUERY } from "../constants/styles";
 
 const PageWrapper = styled.div`
   max-width: 100%;
@@ -18,6 +19,10 @@ const MainArea = styled.div`
   width: 50%;
   margin-left: 25vw;
   padding: 18px 36px;
+  ${MEDIA_QUERY.mobile} {
+    width: 80%;
+    margin: 0 auto;
+  }
 `;
 
 export default function App() {

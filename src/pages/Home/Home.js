@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { getPosts } from "../../WebApi";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { COLOR } from "../../constants/styles";
+import { COLOR, MEDIA_QUERY } from "../../constants/styles";
 import Paginator from "../../components/Paginator";
 import { PageContext } from "../../context";
 
@@ -24,10 +24,16 @@ const Title = styled(Link)`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  ${MEDIA_QUERY.mobile} {
+    font-size: 20px;
+  }
 `;
 const CreatedAt = styled.div`
   font-size: 16px;
   color: ${COLOR.ghost};
+  ${MEDIA_QUERY.mobile} {
+    font-size: 14px;
+  }
 `;
 const ContentPreview = styled.div`
   width: 80%;

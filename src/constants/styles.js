@@ -5,6 +5,7 @@ export const COLOR = {
   light_primary_hover: "#edebe9",
   transparent_primary: "#bfbab055",
   transparent_primary_hover: "#bfbab099",
+  white: "#fff",
   text_dark: "#333",
   text_darker: "#000",
   text_notsodark: "#555",
@@ -13,4 +14,9 @@ export const COLOR = {
   ghost: "rgba(0, 0, 0, 0.3)",
   ghost_darker: "rgba(0, 0, 0, 0.6)",
   loadingBG: "rgba(0, 0, 0, 0.2)",
+};
+
+export const MEDIA_QUERY = {
+  tablet: "@media screen and (min-width: 800px) and (max-width: 1280px)",
+  mobile: "@media screen and (max-width: 800px)",
 };
