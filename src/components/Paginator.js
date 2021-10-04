@@ -7,7 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 12px 0px;
+  margin: 24px 0px;
 `;
 const PageInfo = styled.div`
   color: ${COLOR.text_dark};
@@ -18,14 +18,14 @@ const PaginatorWrapper = styled.div`
 `;
 const BTN = styled.div`
   padding: 4px 8px;
-  border: 1px solid ${COLOR.dark_primary_hover};
+  border: 1px solid ${COLOR.text_dark};
   color: ${COLOR.text_dark};
   margin: 0 4px;
   cursor: pointer;
   trainsition: all 0.2s;
-
   &:hover {
     background: ${COLOR.dark_primary_hover};
+    border: 1px solid ${COLOR.dark_primary};
     color: ${COLOR.text_kindawhite};
   }
 `;

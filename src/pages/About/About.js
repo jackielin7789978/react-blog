@@ -13,20 +13,17 @@ const PageWrapper = styled.div`
 const Title = styled.div`
   margin-bottom: 12px;
   font-size: 20px;
-  font-weight: bold;
-  span {
-    font-family: "Monoton", cursive;
-    font-weight: normal;
-    font-size: 32px;
-    position: relative;
-    top: 2px;
-    left: 4px;
-  }
   ${MEDIA_QUERY.mobile} {
     font-size: 18px;
-    span {
-      font-size: 30px;
-    }
+  }
+`;
+const LOGO = styled.span`
+  text-decoration: none;
+  color: ${COLOR.text_dark};
+  font-size: 36px;
+  font-family: "Monoton", cursive;
+  ${MEDIA_QUERY.mobile} {
+    font-size: 30px;
   }
 `;
 const IMG = styled.img`
@@ -52,7 +49,7 @@ export default function About() {
   return (
     <PageWrapper>
       <Title>
-        Creator of <span>BLOGG</span>
+        Creator of <LOGO>BLOGG</LOGO>
       </Title>
       <IMG src={about} alt="about me" />
       <Desc>

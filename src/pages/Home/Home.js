@@ -51,7 +51,7 @@ const ReadMoreBTN = styled(Link)`
   border: 2px solid ${COLOR.transparent_primary};
   margin-top: 48px;
   margin-left: -4px;
-  width: 100px;
+  width: 140px;
   text-align: center;
   padding: 8px;
   transition: all 0.2s;
@@ -81,13 +81,23 @@ export default function Home() {
   const [pageNum, setPageNum] = useState(1);
   const [totalPosts, setTotalPosts] = useState(null);
 
+  // useEffect(() => {
+  //   setPosts(null);
+  //   getPosts(pageNum).then((data) => {
+  //     setPosts(data.posts);
+  //     setTotalPosts(data.totalPosts);
+  //   });
+  // }, [pageNum]);
+
   useEffect(() => {
+    window.scrollTo(0, 0);
+    // 抓到資料後才 render
     setPosts(null);
-    getPosts(pageNum).then((data) => {
-      window.scroll(0, 0);
+    (async () => {
+      const data = await getPosts(pageNum);
       setPosts(data.posts);
       setTotalPosts(data.totalPosts);
-    });
+    })();
   }, [pageNum]);
 
   return (

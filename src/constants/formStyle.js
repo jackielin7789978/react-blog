@@ -1,24 +1,10 @@
 import styled from "styled-components";
 import { COLOR, MEDIA_QUERY } from "./styles";
 
-export const FormWrapper = styled.div`
-  width: 30vw;
-  height: 420px;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid transparent;
-  box-shadow: ${COLOR.ghost} 2px 5px 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
+export const Container = styled.div`
+  width: 25vw;
+  margin: 120px auto;
+  border: 1px solid ${COLOR.transparent_primary};
   ${MEDIA_QUERY.tablet} {
     width: 40vw;
   }
@@ -26,40 +12,60 @@ export const FormWrapper = styled.div`
     width: 60vw;
   }
 `;
-export const Title = styled.div`
-  font-size: 28px;
+export const Tabs = styled.div`
+  width: 100%;
+  height: 50px;
+  display: flex;
+`;
+export const Tab = styled.div`
+  height: 100%;
+  width: 50%;
+  line-height: 50px;
   text-align: center;
-  margin-bottom: 24px;
+  &:first-child {
+    border-right: 1px solid ${COLOR.transparent_primary};
+  }
+  cursor: pointer;
+`;
+export const FormContainer = styled.form`
+  width: 100%;
+  padding: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const Inputs = styled.div`
+  width: 70%;
 `;
 export const Input = styled.input`
-  box-sizing: border-box;
-  width: 200px;
-  margin: 8px 0px;
-  padding: 4px;
-  border: 1px solid ${COLOR.ghost};
+  width: 100%;
+  margin: 20px auto;
+  padding: 10px 16px;
+  font-size: 16px;
+  border: 1px solid ${COLOR.transparent_primary};
+  border-radius: 0px;
+  color: ${COLOR.text_dark};
+  &:focus {
+    outline: 1px solid ${COLOR.text_notsodark};
+  }
+  &::placeholder {
+    color: ${COLOR.text_grey};
+  }
+`;
+export const Submit = styled(Input)`
+  background: ${COLOR.light_primary};
+  color: ${COLOR.white};
+  cursor: pointer;
+  transition: ease 0.2s;
+  &:hover {
+    background: ${COLOR.dark_primary};
+  }
   &:focus {
     outline: none;
-    border: 1px solid ${COLOR.ghost_darker};
-  }
-  &[type="submit"] {
-    margin: 24px 0px;
-    background: ${COLOR.dark_primary};
-    color: white;
-    border: none;
-    padding: 8px;
-    font-size: 18px;
-    transition: all 0.2s;
-    &:hover {
-      cursor: pointer;
-      background: ${COLOR.dark_primary_hover};
-    }
   }
 `;
-export const Label = styled.label`
-  display: block;
-`;
-export const ERR = styled.div`
-  color: red;
+export const ERR = styled.p`
+  padding: 0 4px;
+  color: ${COLOR.warning};
   font-size: 14px;
-  text-align: center;
 `;

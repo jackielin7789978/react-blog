@@ -10,6 +10,7 @@ const TopBar = styled.div`
   height: 30px;
   width: 100%;
   background: ${COLOR.light_primary};
+  position: fixed;
   ${MEDIA_QUERY.mobile} {
     display: none;
   }
@@ -22,8 +23,12 @@ const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid ${COLOR.transparent_primary};
+  box-shadow: 0px 2px 4px 1px ${COLOR.transparent_primary};
+  position: fixed;
+  top: 30px;
   ${MEDIA_QUERY.mobile} {
     height: 60px;
+    top: 0;
   }
 `;
 const Sitename = styled(Link)`
