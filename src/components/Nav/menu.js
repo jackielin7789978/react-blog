@@ -12,7 +12,6 @@ const BTNWrapper = styled.div`
   ${MEDIA_QUERY.mobile} {
     flex-direction: column;
     background: ${COLOR.light_primary};
-    z-index: 1;
     position: fixed;
     top: 0;
     transition: linear 0.3s;
@@ -21,6 +20,7 @@ const BTNWrapper = styled.div`
     width: 60vw;
     margin: 0;
     padding-top: 60px;
+    z-index: 2;
   }
 `;
 const BTN = styled(Link)`

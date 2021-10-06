@@ -5,10 +5,11 @@ import PropTypes from "prop-types";
 const OpenMenu = styled.button`
   display: none;
   ${MEDIA_QUERY.mobile} {
-    margin-right: 2vw;
+    margin-right: 5vw;
+    padding: 2px 0px;
     width: 40px;
     height: 40px;
-    border: 1px solid ${COLOR.light_primary};
+    border: 2px solid ${COLOR.light_primary};
     border-radius: 3px;
     flex-direction: column;
     justify-content: space-around;
@@ -38,7 +39,7 @@ const OpenMenu = styled.button`
 const CloseMenu = styled.button`
   display: none;
   ${MEDIA_QUERY.mobile} {
-    margin-right: 2vw;
+    margin-right: 5vw;
     width: 40px;
     height: 40px;
     border: none;
@@ -53,7 +54,7 @@ const CloseMenu = styled.button`
       background: rgba(0, 0, 0, 0.1);
     }
     div {
-      height: 2px;
+      height: 3px;
       width: 70%;
       margin: 0px auto;
       background: ${COLOR.white};

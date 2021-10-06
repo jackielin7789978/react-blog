@@ -3,40 +3,21 @@ import { login, getMe, register } from "../../WebApi";
 import { setAuthToken } from "../../utils";
 import { useHistory } from "react-router";
 import { AuthContext } from "../../context";
-import styled from "styled-components";
-import {
-  FormWrapper,
-  Title,
-  Input,
-  Label,
-  ERR,
-} from "../../constants/formStyle";
-import { MEDIA_QUERY } from "../../constants/styles";
-
-const PageWrapper = styled.div`
-  min-height: calc(100vh - 155px);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  ${MEDIA_QUERY.tablet} {
-    flex-direction: column;
-  }
-  ${MEDIA_QUERY.mobile} {
-    flex-direction: column;
-  }
-`;
+import LoginForm from "./LoginForm";
+import RegForm from "./RegForm";
+import { Container, Tabs, Tab } from "../../constants/formStyle";
+import { COLOR } from "../../constants/styles";
 
 export default function Login() {
   const [loginUsername, setLoginUsername] = useState("");
   const [loginPassword, setLoginPassword] = useState("");
   const [loginErrMsg, setLoginErrMsg] = useState("");
-  const history = useHistory();
-  const { setUser } = useContext(AuthContext);
-
   const [regUsername, setRegUsername] = useState("");
   const [regNickname, setRegNickname] = useState("");
   const [regPassword, setRegPassword] = useState("");
   const [regErrMsg, setRegErrMsg] = useState("");
+
+  const [tab, setTab] = useState("Login");
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -77,77 +58,58 @@ export default function Login() {
     });
   };
 
+  const handleTab = (e) => {
+    if (e.target.innerText === "Login") {
+      setTab(e.target.innerText);
+    }
+    if (e.target.innerText === "Register") {
+      setTab(e.target.innerText);
+    }
+  };
+
+  const loginProps = {
+    setLoginUsername,
+    setLoginPassword,
+    handleLogin,
+    loginErrMsg,
+    setLoginErrMsg,
+  };
+  const regProps = {
+    setRegUsername,
+    setRegNickname,
+    setRegPassword,
+    handleRegister,
+    regErrMsg,
+    setRegErrMsg,
+  };
+  const history = useHistory();
+  const { setUser } = useContext(AuthContext);
   return (
-    <PageWrapper>
-      <FormWrapper>
-        <Title>Login</Title>
-        <form onSubmit={handleLogin}>
-          <div>
-            <Label>Username</Label>
-            <Input
-              type="text"
-              onChange={(e) => {
-                setLoginErrMsg(null);
-                setLoginUsername(e.target.value);
-              }}
-              value={loginUsername}
-            />
-          </div>
-          <div>
-            <Label>Password</Label>
-            <Input
-              type="password"
-              onChange={(e) => {
-                setLoginErrMsg(null);
-                setLoginPassword(e.target.value);
-              }}
-              value={loginPassword}
-            />
-          </div>
-          <Input type="submit" value="SIGN IN" />
-          {loginErrMsg && <ERR>ERROR: {loginErrMsg}</ERR>}
-        </form>
-      </FormWrapper>
-      <FormWrapper>
-        <Title>Register</Title>
-        <form onSubmit={handleRegister}>
-          <div>
-            <Label>Username</Label>
-            <Input
-              type="text"
-              onChange={(e) => {
-                setRegErrMsg(null);
-                setRegUsername(e.target.value);
-              }}
-              value={regUsername}
-            />
-          </div>
-          <div>
-            <Label>Nickname</Label>
-            <Input
-              type="text"
-              onChange={(e) => {
-                setRegErrMsg(null);
-                setRegNickname(e.target.value);
-              }}
-              value={regNickname}
-            />
-          </div>
-          <div>
-            <Label>Password</Label>
-            <Input
-              type="password"
-              onChange={(e) => {
-                setRegErrMsg(null);
-                setRegPassword(e.target.value);
-              }}
-              value={regPassword}
-            />
-          </div>
-          <Input type="submit" value="SIGN UP" />
-          {regErrMsg && <ERR>ERROR: {regErrMsg}</ERR>}
-        </form>
-      </FormWrapper>
-    </PageWrapper>
+    <Container>
+      <Tabs>
+        <Tab
+          onClick={handleTab}
+          style={{
+            background: tab === "Register" && COLOR.tab_notselected,
+            borderBottom:
+              tab === "Register" && `1px solid ${COLOR.transparent_primary}`,
+          }}
+        >
+          Login
+        </Tab>
+        <Tab
+          onClick={handleTab}
+          style={{
+            background: tab === "Login" && COLOR.tab_notselected,
+            borderBottom:
+              tab === "Login" && `1px solid ${COLOR.transparent_primary}`,
+          }}
+        >
+          Register
+        </Tab>
+      </Tabs>
+      {tab === "Login" && <LoginForm props={loginProps} />}
+      {tab === "Register" && <RegForm props={regProps} />}
+    </Container>
   );
 }

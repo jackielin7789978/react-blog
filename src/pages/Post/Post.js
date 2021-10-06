@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { getSinglePost } from "../../WebApi";
 import { COLOR, MEDIA_QUERY } from "../../constants/styles";
+import Loading from "../../components/Loading";
 
 const PostWrapper = styled.div`
   display: flex;
@@ -70,13 +71,22 @@ PostItem.propTypes = {
 };
 
 export default function Post() {
-  window.scroll(0, 0);
   const [post, setPost] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let { id } = useParams();
+
   useEffect(() => {
-    getSinglePost(id).then((data) => {
+    (async () => {
+      const data = await getSinglePost(id);
+      setIsLoading(false);
       setPost(data);
-    });
+    })();
   }, [id]);
-  return <PostItem post={post} />;
+
+  return (
+    <>
+      {isLoading && <Loading />}
+      {isLoading || <PostItem post={post} />}
+    </>
+  );
 }

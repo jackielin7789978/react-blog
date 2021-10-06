@@ -3,7 +3,8 @@ import { COLOR, MEDIA_QUERY } from "../constants/styles";
 import blogg from "../pics/blogg.png";
 
 const Container = styled.div`
-  min-height: calc(100vh - 120px);
+  margin-top: 110px;
+  min-height: calc(100vh - 142px);
   min-width: 200px;
   width: 20vw;
   display: flex;
