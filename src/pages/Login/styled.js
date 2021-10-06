@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR, MEDIA_QUERY } from "./styles";
+import { COLOR, MEDIA_QUERY } from "../../constants/styles";
 
 export const Container = styled.div`
   width: 25vw;
@@ -63,9 +63,4 @@ export const Submit = styled(Input)`
   &:focus {
     outline: none;
   }
-`;
-export const ERR = styled.p`
-  padding: 0 4px;
-  color: ${COLOR.warning};
-  font-size: 14px;
 `;

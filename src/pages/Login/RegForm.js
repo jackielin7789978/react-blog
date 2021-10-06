@@ -1,20 +1,15 @@
-import {
-  FormContainer,
-  Inputs,
-  Input,
-  Submit,
-  ERR,
-} from "../../constants/formStyle";
+import { FormContainer, Inputs, Input, Submit } from "./styled";
+import { ERR } from "../../components/general";
 import Proptypes from "prop-types";
 
 export default function RegForm({ props }) {
   const {
-    setRegUsername,
-    setRegNickname,
-    setRegPassword,
+    setUsername,
+    setNickname,
+    setPassword,
     handleRegister,
-    regErrMsg,
-    setRegErrMsg,
+    errMsg,
+    setErrMsg,
   } = props;
   return (
     <FormContainer onSubmit={handleRegister}>
@@ -22,26 +17,26 @@ export default function RegForm({ props }) {
         <Input
           placeholder="Username"
           onChange={(e) => {
-            setRegErrMsg("");
-            setRegUsername(e.target.value);
+            setErrMsg("");
+            setUsername(e.target.value);
           }}
         />
         <Input
           placeholder="Nickname"
           onChange={(e) => {
-            setRegErrMsg("");
-            setRegNickname(e.target.value);
+            setErrMsg("");
+            setNickname(e.target.value);
           }}
         />
         <Input
           placeholder="Password"
           type="password"
           onChange={(e) => {
-            setRegErrMsg("");
-            setRegPassword(e.target.value);
+            setErrMsg("");
+            setPassword(e.target.value);
           }}
         />
-        {regErrMsg && <ERR>ERROR: {regErrMsg}</ERR>}
+        {errMsg && <ERR>錯誤：{errMsg}</ERR>}
         <Submit type="submit" value="註冊" />
       </Inputs>
     </FormContainer>
@@ -50,10 +45,10 @@ export default function RegForm({ props }) {
 
 RegForm.propTypes = {
   props: Proptypes.object,
-  setRegUsername: Proptypes.func,
-  setRegNickname: Proptypes.func,
-  setRegPassword: Proptypes.func,
-  regErrMsg: Proptypes.string,
+  setUsername: Proptypes.func,
+  setNickname: Proptypes.func,
+  setPassword: Proptypes.func,
+  errMsg: Proptypes.string,
   handleRegister: Proptypes.func,
-  setRegErrMsg: Proptypes.func,
+  setErrMsg: Proptypes.func,
 };

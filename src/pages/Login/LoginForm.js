@@ -1,39 +1,28 @@
-import {
-  FormContainer,
-  Inputs,
-  Input,
-  Submit,
-  ERR,
-} from "../../constants/formStyle";
+import { FormContainer, Inputs, Input, Submit } from "./styled";
+import { ERR } from "../../components/general";
 import Proptypes from "prop-types";
 
 export default function LoginForm({ props }) {
-  const {
-    setLoginUsername,
-    setLoginPassword,
-    handleLogin,
-    loginErrMsg,
-    setLoginErrMsg,
-  } = props;
+  const { setUsername, setPassword, handleLogin, errMsg, setErrMsg } = props;
   return (
     <FormContainer onSubmit={handleLogin}>
       <Inputs>
         <Input
           placeholder="Username"
           onChange={(e) => {
-            setLoginErrMsg("");
-            setLoginUsername(e.target.value);
+            setErrMsg("");
+            setUsername(e.target.value);
           }}
         />
         <Input
           placeholder="Password"
           type="password"
           onChange={(e) => {
-            setLoginErrMsg("");
-            setLoginPassword(e.target.value);
+            setErrMsg("");
+            setPassword(e.target.value);
           }}
         />
-        {loginErrMsg && <ERR>ERROR: {loginErrMsg}</ERR>}
+        {errMsg && <ERR>錯誤：{errMsg}</ERR>}
         <Submit type="submit" value="登入" />
       </Inputs>
     </FormContainer>
@@ -42,9 +31,9 @@ export default function LoginForm({ props }) {
 
 LoginForm.propTypes = {
   props: Proptypes.object,
-  setLoginUsername: Proptypes.func,
-  setLoginPassword: Proptypes.func,
-  loginErrMsg: Proptypes.string,
+  setUsername: Proptypes.func,
+  setPassword: Proptypes.func,
+  errMsg: Proptypes.string,
   handleLogin: Proptypes.func,
-  setLoginErrMsg: Proptypes.func,
+  setErrMsg: Proptypes.func,
 };
