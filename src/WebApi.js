@@ -1,19 +1,32 @@
 const BASE_URL = "https://student-json-api.lidemy.me";
 
-export const getPosts = async (pageNum) => {
-  const res = await fetch(
+export const getPosts = (pageNum) => {
+  const data = {};
+  return fetch(
     `${BASE_URL}/posts?_sort=createdAt&_order=desc&_page=${pageNum}&_limit=5`
-  );
-  const posts = await res.json();
-  const data = {
-    link: res.headers.get("link"),
-    totalPosts: res.headers.get("x-total-count"),
-    posts,
-  };
-  return data;
+  )
+    .then((res) => {
+      data["totalPosts"] = res.headers.get("x-total-count");
+      return res.json();
+    })
+    .then((res) => {
+      data["posts"] = res;
+      return data;
+    });
 };
+
 export const getSinglePost = async (id) => {
   const res = await fetch(`${BASE_URL}/posts/${id}`);
+  return await res.json();
+};
+
+export const getMe = async () => {
+  const token = localStorage.getItem("token");
+  const res = await fetch(`${BASE_URL}/me`, {
+    headers: {
+      authorization: `Bearer ${token}`,
+    },
+  });
   return await res.json();
 };
 
@@ -29,21 +42,6 @@ export const login = async (username, password) => {
     }),
   });
   return await res.json();
-};
-
-export const getMe = async () => {
-  const token = localStorage.getItem("token");
-  let res;
-  try {
-    res = await fetch(`${BASE_URL}/me`, {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    });
-    return await res.json();
-  } catch (e) {
-    console.log(e);
-  }
 };
 
 export const register = async (username, password, nickname) => {

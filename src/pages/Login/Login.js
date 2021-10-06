@@ -5,60 +5,70 @@ import { useHistory } from "react-router";
 import { AuthContext } from "../../context";
 import LoginForm from "./LoginForm";
 import RegForm from "./RegForm";
-import { Container, Tabs, Tab } from "../../constants/formStyle";
+import { Container, Tabs, Tab } from "./styled";
 import { COLOR } from "../../constants/styles";
 
 export default function Login() {
-  const [loginUsername, setLoginUsername] = useState("");
-  const [loginPassword, setLoginPassword] = useState("");
-  const [loginErrMsg, setLoginErrMsg] = useState("");
-  const [regUsername, setRegUsername] = useState("");
-  const [regNickname, setRegNickname] = useState("");
-  const [regPassword, setRegPassword] = useState("");
-  const [regErrMsg, setRegErrMsg] = useState("");
-
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [nickname, setNickname] = useState("");
+  const [errMsg, setErrMsg] = useState("");
   const [tab, setTab] = useState("Login");
+
+  const history = useHistory();
+  const { setUser } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
-    login(loginUsername, loginPassword).then((data) => {
-      if (!data.ok) {
-        return setLoginErrMsg(data.message);
-      }
-      setAuthToken(data.token);
-      getMe().then((res) => {
+    if (!username || !password) return setErrMsg("請填寫所有欄位");
+    const asyncLogin = async () => {
+      let data;
+      try {
+        data = await login(username, password);
+        if (!data.ok) return setErrMsg(data.message);
+        setAuthToken(data.token);
+        const res = await getMe();
         if (!res.ok) {
-          setAuthToken(null);
-          return setLoginErrMsg(res.toString());
+          setAuthToken("");
+          return setErrMsg(res.toString());
         }
         setUser(res.data);
         history.push("./");
-      });
-    });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    asyncLogin();
   };
 
   const handleRegister = (e) => {
     e.preventDefault();
-    register(regUsername, regNickname, regPassword).then((res) => {
-      if (!res.ok) {
-        setAuthToken(null);
-        return setRegErrMsg(`register: ${res.message}`);
+    if (!username || !nickname || !password) return setErrMsg("請填寫所有欄位");
+    const asyncRegister = async () => {
+      let res;
+      try {
+        res = await register(username, nickname, password);
+        if (!res.ok) {
+          setAuthToken("");
+          return setErrMsg(res.message);
+        }
+        setAuthToken(res.token);
+        const response = await getMe();
+        if (!response.ok) {
+          setAuthToken("");
+          return setErrMsg(response.toString());
+        }
+        setUser(response.data);
+        history.push("./");
+      } catch (e) {
+        console.log(e);
       }
-      setAuthToken(res.token);
-      login(regUsername, regPassword).then((data) => {
-        getMe().then((res) => {
-          if (!res.ok) {
-            setAuthToken(null);
-            return setRegErrMsg(`login: ${res.toString()}`);
-          }
-          setUser(res.data);
-          history.push("./");
-        });
-      });
-    });
+    };
+    asyncRegister();
   };
 
   const handleTab = (e) => {
+    setErrMsg("");
     if (e.target.innerText === "Login") {
       setTab(e.target.innerText);
     }
@@ -68,22 +78,15 @@ export default function Login() {
   };
 
   const loginProps = {
-    setLoginUsername,
-    setLoginPassword,
+    setUsername,
+    setPassword,
     handleLogin,
-    loginErrMsg,
-    setLoginErrMsg,
+    errMsg,
+    setErrMsg,
   };
-  const regProps = {
-    setRegUsername,
-    setRegNickname,
-    setRegPassword,
-    handleRegister,
-    regErrMsg,
-    setRegErrMsg,
-  };
-  const history = useHistory();
-  const { setUser } = useContext(AuthContext);
+  const regProps = loginProps;
+  regProps["setNickname"] = setNickname;
+  regProps["handleRegister"] = handleRegister;
   return (
     <Container>
       <Tabs>

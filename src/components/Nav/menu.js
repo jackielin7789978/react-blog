@@ -56,22 +56,22 @@ export default function Menu({ handleClose, $isOpen }) {
   };
   return (
     <BTNWrapper $isOpen={$isOpen}>
-      <BTN onClick={handleClose} exact={true} to="/">
+      <BTN onClick={handleClose} exact="true" to="/">
         首頁
       </BTN>
       {user && (
-        <BTN onClick={handleClose} exact={true} to="/newpost">
+        <BTN onClick={handleClose} exact="true" to="/newpost">
           發布文章
         </BTN>
       )}
-      <BTN onClick={handleClose} exact={true} to="/list">
+      <BTN onClick={handleClose} exact="true" to="/list">
         文章列表
       </BTN>
-      <BTN onClick={handleClose} exact={true} to="/about">
+      <BTN onClick={handleClose} exact="true" to="/about">
         關於我
       </BTN>
       {!user && (
-        <BTN onClick={handleClose} exact={true} to="/login">
+        <BTN onClick={handleClose} exact="true" to="/login">
           登入 / 註冊
         </BTN>
       )}
