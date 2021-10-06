@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { COLOR, MEDIA_QUERY } from "../../constants/styles";
-import PropTypes from "prop-types";
+import styled from 'styled-components'
+import { COLOR, MEDIA_QUERY } from '../../constants/styles'
+import PropTypes from 'prop-types'
 
 const OpenMenu = styled.button`
   display: none;
   ${MEDIA_QUERY.mobile} {
-    margin-right: 5vw;
+    margin-right: 5vw
     padding: 2px 0px;
     width: 40px;
     height: 40px;
@@ -16,7 +16,7 @@ const OpenMenu = styled.button`
     cursor: pointer;
     transition: linear 0.2s;
     z-index: 1;
-    display: ${({ $isOpen }) => ($isOpen ? "none" : "flex")};
+    display: ${({ $isOpen }) => ($isOpen ? 'none' : 'flex')};
     &:active {
       outline: none;
       border: none;
@@ -34,7 +34,7 @@ const OpenMenu = styled.button`
       background: ${COLOR.light_primary};
     }
   }
-`;
+`
 
 const CloseMenu = styled.button`
   display: none;
@@ -45,7 +45,7 @@ const CloseMenu = styled.button`
     border: none;
     border-radius: 3px;
     cursor: pointer;
-    display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
+    display: ${({ $isOpen }) => ($isOpen ? 'flex' : 'none')};
     flex-direction: column;
     justify-content: space-around;
     z-index: 5;
@@ -71,7 +71,7 @@ const CloseMenu = styled.button`
       bottom: 10px;
     }
   }
-`;
+`
 
 export default function Burger({ handleOpen, handleClose, $isOpen }) {
   return (
@@ -86,11 +86,11 @@ export default function Burger({ handleOpen, handleClose, $isOpen }) {
         <div />
       </CloseMenu>
     </>
-  );
+  )
 }
 
 Burger.propTypes = {
   handleOpen: PropTypes.func,
   handleClose: PropTypes.func,
   $isOpen: PropTypes.bool,
-};
+}

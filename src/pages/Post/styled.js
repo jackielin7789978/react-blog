@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { COLOR, MEDIA_QUERY } from "../../constants/styles";
+import styled from 'styled-components'
+import { COLOR, MEDIA_QUERY } from '../../constants/styles'
 
 export const PostWrapper = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const PostWrapper = styled.div`
     min-width: unset;
     margin: 20px auto;
   }
-`;
+`
 export const Title = styled.div`
   text-decoration: none;
   margin: 12px 0px;
@@ -33,7 +33,7 @@ export const Title = styled.div`
   ${MEDIA_QUERY.mobile} {
     font-size: 24px;
   }
-`;
+`
 export const CreatedAt = styled.div`
   font-size: 16px;
   color: ${COLOR.ghost};
@@ -43,7 +43,7 @@ export const CreatedAt = styled.div`
   ${MEDIA_QUERY.mobile} {
     font-size: 12px;
   }
-`;
+`
 export const Content = styled.div`
   font-size: 18px;
   margin: 24px 0;
@@ -59,4 +59,4 @@ export const Content = styled.div`
   ${MEDIA_QUERY.mobile} {
     font-size: 16px;
   }
-`;
+`
