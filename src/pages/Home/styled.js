@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import { COLOR, MEDIA_QUERY } from "../../constants/styles";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import { COLOR, MEDIA_QUERY } from '../../constants/styles'
+import { Link } from 'react-router-dom'
 
 export const PostWrapper = styled.div`
   width: 100%;
@@ -12,7 +12,7 @@ export const PostWrapper = styled.div`
   ${MEDIA_QUERY.mobile} {
     padding: 20px;
   }
-`;
+`
 export const Title = styled(Link)`
   text-decoration: none;
   margin: 8px 0px;
@@ -25,14 +25,14 @@ export const Title = styled(Link)`
   ${MEDIA_QUERY.mobile} {
     font-size: 20px;
   }
-`;
+`
 export const CreatedAt = styled.div`
   font-size: 16px;
   color: ${COLOR.ghost};
   ${MEDIA_QUERY.mobile} {
     font-size: 14px;
   }
-`;
+`
 export const ContentPreview = styled.div`
   width: 80%;
   margin-top: 18px;
@@ -42,7 +42,7 @@ export const ContentPreview = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-`;
+`
 export const ReadMoreBTN = styled(Link)`
   text-decoration: none;
   color: ${COLOR.text_notsodark};
@@ -57,4 +57,4 @@ export const ReadMoreBTN = styled(Link)`
   &:hover {
     border: 2px solid ${COLOR.transparent_primary_hover};
   }
-`;
+`

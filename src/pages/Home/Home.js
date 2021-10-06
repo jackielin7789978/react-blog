@@ -1,15 +1,15 @@
-import PropTypes from "prop-types";
-import { getPosts } from "../../WebApi";
-import { useState, useEffect } from "react";
-import Paginator from "../../components/Paginator";
-import { PageContext } from "../../context";
+import PropTypes from 'prop-types'
+import { getPosts } from '../../WebApi'
+import { useState, useEffect } from 'react'
+import Paginator from '../../components/Paginator'
+import { PageContext } from '../../context'
 import {
   PostWrapper,
   CreatedAt,
   Title,
   ContentPreview,
   ReadMoreBTN,
-} from "./styled";
+} from './styled'
 
 function Post({ post }) {
   return (
@@ -19,33 +19,33 @@ function Post({ post }) {
       <ContentPreview>{post.body}</ContentPreview>
       <ReadMoreBTN to={`/posts/${post.id}`}>READ MORE</ReadMoreBTN>
     </PostWrapper>
-  );
+  )
 }
 
 Post.propTypes = {
   post: PropTypes.object,
-};
+}
 
 export default function Home() {
-  const [posts, setPosts] = useState(null);
-  const [pageNum, setPageNum] = useState(1);
-  const [totalPosts, setTotalPosts] = useState(null);
+  const [posts, setPosts] = useState(null)
+  const [pageNum, setPageNum] = useState(1)
+  const [totalPosts, setTotalPosts] = useState(null)
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-    setPosts(null);
+    window.scrollTo(0, 0)
+    setPosts(null)
     const fetchData = async () => {
-      let data;
+      let data
       try {
-        data = await getPosts(pageNum);
-        setPosts(data.posts);
-        setTotalPosts(data.totalPosts);
+        data = await getPosts(pageNum)
+        setPosts(data.posts)
+        setTotalPosts(data.totalPosts)
       } catch (e) {
-        console.log(e);
+        console.log(e)
       }
-    };
-    fetchData();
-  }, [pageNum]);
+    }
+    fetchData()
+  }, [pageNum])
 
   return (
     posts && (
@@ -56,5 +56,5 @@ export default function Home() {
         <Paginator />
       </PageContext.Provider>
     )
-  );
+  )
 }

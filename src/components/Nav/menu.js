@@ -1,10 +1,10 @@
-import styled from "styled-components";
-import { AuthContext } from "../../context";
-import { useContext } from "react";
-import { setAuthToken } from "../../utils";
-import { COLOR, MEDIA_QUERY } from "../../constants/styles";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import styled from 'styled-components'
+import { AuthContext } from '../../context'
+import { useContext } from 'react'
+import { setAuthToken } from '../../utils'
+import { COLOR, MEDIA_QUERY } from '../../constants/styles'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const BTNWrapper = styled.div`
   margin-right: 4vw;
@@ -15,14 +15,14 @@ const BTNWrapper = styled.div`
     position: fixed;
     top: 0;
     transition: linear 0.3s;
-    right: ${({ $isOpen }) => ($isOpen ? "0%" : "-100%")};
+    right: ${({ $isOpen }) => ($isOpen ? '0%' : '-100%')};
     height: 100vh;
     width: 60vw;
     margin: 0;
     padding-top: 60px;
     z-index: 2;
   }
-`;
+`
 const BTN = styled(Link)`
   text-decoration: none;
   cursor: pointer;
@@ -46,50 +46,50 @@ const BTN = styled(Link)`
       color: ${COLOR.dark_primary};
     }
   }
-`;
+`
 
 export default function Menu({ handleClose, $isOpen }) {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser } = useContext(AuthContext)
   const handleLogout = () => {
-    setUser(null);
-    setAuthToken("");
-  };
+    setUser(null)
+    setAuthToken('')
+  }
   return (
     <BTNWrapper $isOpen={$isOpen}>
-      <BTN onClick={handleClose} exact="true" to="/">
+      <BTN onClick={handleClose} exact='true' to='/'>
         首頁
       </BTN>
       {user && (
-        <BTN onClick={handleClose} exact="true" to="/newpost">
+        <BTN onClick={handleClose} exact='true' to='/newpost'>
           發布文章
         </BTN>
       )}
-      <BTN onClick={handleClose} exact="true" to="/list">
+      <BTN onClick={handleClose} exact='true' to='/list'>
         文章列表
       </BTN>
-      <BTN onClick={handleClose} exact="true" to="/about">
+      <BTN onClick={handleClose} exact='true' to='/about'>
         關於我
       </BTN>
       {!user && (
-        <BTN onClick={handleClose} exact="true" to="/login">
+        <BTN onClick={handleClose} exact='true' to='/login'>
           登入 / 註冊
         </BTN>
       )}
       {user && (
         <BTN
-          to="/"
+          to='/'
           onClick={() => {
-            handleLogout();
-            handleClose();
+            handleLogout()
+            handleClose()
           }}
         >
           登出
         </BTN>
       )}
     </BTNWrapper>
-  );
+  )
 }
 Menu.propTypes = {
   handleClose: PropTypes.func,
   $isOpen: PropTypes.bool,
-};
+}

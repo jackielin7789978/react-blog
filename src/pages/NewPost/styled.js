@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { COLOR, MEDIA_QUERY } from "../../constants/styles";
+import styled from 'styled-components'
+import { COLOR, MEDIA_QUERY } from '../../constants/styles'
 
 export const PageWrapper = styled.div`
   width: 100%;
@@ -7,7 +7,7 @@ export const PageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`
 export const EditorWrapper = styled.div`
   width: 30vw;
   padding: 30px;
@@ -20,10 +20,10 @@ export const EditorWrapper = styled.div`
     width: 100vw;
     outline: 1px solid gold;
   }
-`;
+`
 export const PageTitle = styled.div`
   font-size: 28px;
-`;
+`
 export const TitleInput = styled.input`
   box-sizing: border-box;
   width: 100%;
@@ -35,7 +35,7 @@ export const TitleInput = styled.input`
     outline: none;
     border: 1px solid ${COLOR.ghost_darker};
   }
-`;
+`
 export const Editor = styled.textarea`
   resize: none;
   width: 100%;
@@ -47,7 +47,7 @@ export const Editor = styled.textarea`
     outline: none;
     border: 1px solid ${COLOR.ghost_darker};
   }
-`;
+`
 export const SubmitBTN = styled.button`
   cursor: pointer;
   width: 100%;
@@ -65,4 +65,4 @@ export const SubmitBTN = styled.button`
   ${MEDIA_QUERY.mobile} {
     height: 30px;
   }
-`;
+`

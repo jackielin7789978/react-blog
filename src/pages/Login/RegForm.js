@@ -1,6 +1,6 @@
-import { FormContainer, Inputs, Input, Submit } from "./styled";
-import { ERR } from "../../components/general";
-import Proptypes from "prop-types";
+import { FormContainer, Inputs, Input, Submit } from './styled'
+import { ERR } from '../../components/general'
+import Proptypes from 'prop-types'
 
 export default function RegForm({ props }) {
   const {
@@ -10,37 +10,37 @@ export default function RegForm({ props }) {
     handleRegister,
     errMsg,
     setErrMsg,
-  } = props;
+  } = props
   return (
     <FormContainer onSubmit={handleRegister}>
       <Inputs>
         <Input
-          placeholder="Username"
+          placeholder='Username'
           onChange={(e) => {
-            setErrMsg("");
-            setUsername(e.target.value);
+            setErrMsg('')
+            setUsername(e.target.value)
           }}
         />
         <Input
-          placeholder="Nickname"
+          placeholder='Nickname'
           onChange={(e) => {
-            setErrMsg("");
-            setNickname(e.target.value);
+            setErrMsg('')
+            setNickname(e.target.value)
           }}
         />
         <Input
-          placeholder="Password"
-          type="password"
+          placeholder='Password'
+          type='password'
           onChange={(e) => {
-            setErrMsg("");
-            setPassword(e.target.value);
+            setErrMsg('')
+            setPassword(e.target.value)
           }}
         />
         {errMsg && <ERR>錯誤：{errMsg}</ERR>}
-        <Submit type="submit" value="註冊" />
+        <Submit type='submit' value='註冊' />
       </Inputs>
     </FormContainer>
-  );
+  )
 }
 
 RegForm.propTypes = {
@@ -51,4 +51,4 @@ RegForm.propTypes = {
   errMsg: Proptypes.string,
   handleRegister: Proptypes.func,
   setErrMsg: Proptypes.func,
-};
+}

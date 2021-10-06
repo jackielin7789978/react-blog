@@ -1,22 +1,22 @@
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 
 export function ScrollToTop() {
-  const { pathname } = useLocation();
+  const { pathname } = useLocation()
 
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    window.scrollTo(0, 0)
+  }, [pathname])
 
-  return null;
+  return null
 }
 
-const TOKEN_NAME = "token";
+const TOKEN_NAME = 'token'
 
 export const setAuthToken = (token) => {
-  localStorage.setItem(TOKEN_NAME, token);
-};
+  localStorage.setItem(TOKEN_NAME, token)
+}
 
 export const getAuthToken = () => {
-  return localStorage.getItem(TOKEN_NAME);
-};
+  return localStorage.getItem(TOKEN_NAME)
+}

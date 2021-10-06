@@ -1,5 +1,5 @@
-import about from "../../pics/about.jpg";
-import { PageWrapper, Title, LOGO, IMG, Desc } from "./styled";
+import about from '../../pics/about.jpg'
+import { PageWrapper, Title, LOGO, IMG, Desc } from './styled'
 
 export default function About() {
   return (
@@ -7,23 +7,23 @@ export default function About() {
       <Title>
         Creator of <LOGO>BLOGG</LOGO>
       </Title>
-      <IMG src={about} alt="about me" />
+      <IMG src={about} alt='about me' />
       <Desc>
         Hi, I'm Jackie.
         <br />
         This is a blog I built using React.
         <br />
-        Click{" "}
+        Click{' '}
         <a
-          href="https://github.com/jackielin7789978/react-blog"
-          target="_blank"
-          rel="noreferrer"
+          href='https://github.com/jackielin7789978/react-blog'
+          target='_blank'
+          rel='noreferrer'
         >
           here
-        </a>{" "}
+        </a>{' '}
         to check it out on GitHub.
         <br />
       </Desc>
     </PageWrapper>
-  );
+  )
 }
